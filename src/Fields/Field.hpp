@@ -19,18 +19,15 @@ class Field
 
         Field(FieldArray dataIn) : data(dataIn) {}
 
-
         const Eigen::Block<const FieldArray, M, N> operator[](int i) const
         {
-            return Eigen::Block<FieldArray, M, N>(data.derived(), 0, i*N);
+            return Eigen::Block<const FieldArray, M, N>(data.derived(), 0, i*N);
         }
-
 
         Eigen::Block<FieldArray, M, N> operator[](int i)
         {
             return Eigen::Block<FieldArray, M, N>(data.derived(), 0, i*N);
         }
-
 
         FieldArray& getData()
         {
